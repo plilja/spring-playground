@@ -1,10 +1,15 @@
 package se.plilja.springplayground;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Data
+@Accessors(fluent = true)
 @Entity
 public class Foo {
     @Id
@@ -12,18 +17,4 @@ public class Foo {
     private Long id;
 
     private String value;
-
-    protected Foo() {}
-
-    public Foo(String value) {
-        this.value = value;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getValue() {
-        return value;
-    }
 }

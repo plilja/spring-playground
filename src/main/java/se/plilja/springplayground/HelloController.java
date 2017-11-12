@@ -19,14 +19,14 @@ public class HelloController {
 
     @RequestMapping("/foo/create/{value}/")
     public String createFoo(@PathVariable String value, Model model) {
-        Foo f = new Foo(value);
+        Foo f = new Foo().value("hej");
         fooRepository.save(f);
-        return String.format("foo created %d\n", f.getId());
+        return String.format("foo created %d\n", f.id());
     }
 
     @RequestMapping("/foo/{id}/")
     public String get(@PathVariable long id, Model model) {
         Foo f = fooRepository.findOne(id);
-        return String.format("foo found %d [%s]\n", f.getId(), f.getValue());
+        return String.format("foo found %d [%s]\n", f.id(), f.value());
     }
 }
