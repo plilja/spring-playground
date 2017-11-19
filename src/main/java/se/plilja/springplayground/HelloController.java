@@ -22,7 +22,7 @@ public class HelloController {
 
     @RequestMapping("/foo/create/{value}/")
     public String createFoo(@PathVariable String value, Model model) {
-        Foo f = new Foo().value("hej");
+        Foo f = new Foo().value(value);
         fooRepository.save(f);
         return String.format("foo created %d\n", f.id());
     }

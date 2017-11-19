@@ -42,7 +42,7 @@ public class HelloControllerTest {
         assertEquals(0, numRowsBefore);
 
         // Insert data
-        mvc.perform(MockMvcRequestBuilders.get("/foo/create/hej/").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/foo/create/hello/").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("foo created 1\n")));
 
@@ -55,6 +55,6 @@ public class HelloControllerTest {
                 .id(resultSet.getLong("id"))
                 .value(resultSet.getString("value")));
         assertEquals(1L, (long) foo.id());
-        assertEquals("hej", foo.value());
+        assertEquals("hello", foo.value());
     }
 }
