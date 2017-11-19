@@ -32,17 +32,7 @@ public class HelloControllerTest {
     public void getHello() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Greetings from Spring Boot!")));
-    }
-
-    @Test
-    public void getFoo() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/foo/create/hej/").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("foo created 1\n")));
-        mvc.perform(MockMvcRequestBuilders.get("/foo/1/").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("foo found 1 [hej]\n")));
+                .andExpect(content().string(equalTo("Greetings from a test case")));
     }
 
     @Test

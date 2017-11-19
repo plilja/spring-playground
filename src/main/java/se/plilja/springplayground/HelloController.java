@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @Autowired
+    private Hello hello;
+
+    @Autowired
     private FooRepository fooRepository;
 
     @RequestMapping("/")
     public String index() {
-        return "Greetings from Spring Boot!";
+        return hello.hello();
     }
 
     @RequestMapping("/foo/create/{value}/")
