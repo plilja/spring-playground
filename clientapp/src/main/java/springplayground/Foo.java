@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Data
 @Accessors(fluent = true)
 @Entity
-public class Foo {
+public class Foo extends EntityBase {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;

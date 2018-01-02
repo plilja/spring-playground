@@ -30,6 +30,6 @@ public class HelloController {
     @RequestMapping("/foo/{id}/")
     public String get(@PathVariable long id, Model model) {
         Foo f = fooRepository.findOne(id);
-        return String.format("foo found %d [%s]\n", f.id(), f.value());
+        return String.format("foo found %d %s %s %s\n", f.id(), f.value(), f.getCreatedByUser(), f.getCreatedDate());
     }
 }
