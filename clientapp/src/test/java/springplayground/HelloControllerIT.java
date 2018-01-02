@@ -1,4 +1,4 @@
-package se.plilja.springplayground;
+package springplayground;
 
 import org.junit.Before;
 import org.junit.Test;

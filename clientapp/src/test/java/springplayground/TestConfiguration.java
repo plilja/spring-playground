@@ -1,4 +1,4 @@
-package se.plilja.springplayground;
+package springplayground;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

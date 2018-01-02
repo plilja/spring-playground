@@ -1,4 +1,4 @@
-package se.plilja.springplayground;
+package springplayground;
 
 public interface Hello {
     String hello();

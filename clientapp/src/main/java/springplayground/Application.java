@@ -1,4 +1,4 @@
-package se.plilja.springplayground;
+package springplayground;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
