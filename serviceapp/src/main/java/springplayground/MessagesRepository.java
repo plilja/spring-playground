@@ -2,6 +2,6 @@ package springplayground;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface FooRepository extends CrudRepository<Foo, Long> {
+public interface MessagesRepository extends CrudRepository<Message, Long> {
 
 }

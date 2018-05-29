@@ -11,10 +11,10 @@ import javax.persistence.Id;
 @Data
 @Accessors(fluent = true)
 @Entity
-public class Foo extends EntityBase {
+public class Message extends EntityBase {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private String value;
+    private String message;
 }

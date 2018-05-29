@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -20,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles(profiles = "test")
-public class HelloControllerTest {
+public class MessagesControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -28,9 +29,25 @@ public class HelloControllerTest {
     private JdbcTemplate template;
 
     @Test
-    public void getHello() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
+    public void sqlTest() throws Exception {
+        // Num rows before
+        int numRowsBefore = template.queryForObject("select count(*) from message", Integer.class);
+        assertEquals(0, numRowsBefore);
+
+        // Insert data
+        mvc.perform(MockMvcRequestBuilders.get("/messages/create/hello/").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Greetings from a test case")));
+                .andExpect(content().string(equalTo("Message created 0\n")));
+
+        // Num rows after
+        int numRowsAfter = template.queryForObject("select count(*) from message", Integer.class);
+        assertEquals(1, numRowsAfter);
+
+        // Query for message object
+        Message message = template.queryForObject("select * from message", (resultSet, i) -> new Message()
+                .id(resultSet.getLong("id"))
+                .message(resultSet.getString("message")));
+        assertEquals(0L, (long) message.id());
+        assertEquals("hello", message.message());
     }
 }
