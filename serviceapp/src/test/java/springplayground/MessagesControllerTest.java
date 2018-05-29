@@ -1,5 +1,6 @@
 package springplayground;
 
+import org.hamcrest.core.StringContains;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -35,9 +35,14 @@ public class MessagesControllerTest {
         assertEquals(0, numRowsBefore);
 
         // Insert data
-        mvc.perform(MockMvcRequestBuilders.get("/messages/create/hello/").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(
+                MockMvcRequestBuilders
+                        .post("/messages")
+                        .content("{\"message\":\"hello\"}")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Message created 0\n")));
+                .andExpect(content().string(StringContains.containsString("hello")));
 
         // Num rows after
         int numRowsAfter = template.queryForObject("select count(*) from message", Integer.class);
@@ -45,9 +50,11 @@ public class MessagesControllerTest {
 
         // Query for message object
         Message message = template.queryForObject("select * from message", (resultSet, i) -> new Message()
-                .id(resultSet.getLong("id"))
-                .message(resultSet.getString("message")));
-        assertEquals(0L, (long) message.id());
-        assertEquals("hello", message.message());
+                .setId(resultSet.getLong("id"))
+                .setMessage(resultSet.getString("message")));
+        assertEquals(0L, (long) message.getId());
+        assertEquals("hello", message.getMessage());
     }
+
+
 }
