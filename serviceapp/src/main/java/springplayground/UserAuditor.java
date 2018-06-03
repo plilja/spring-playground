@@ -2,9 +2,11 @@ package springplayground;
 
 import org.springframework.data.domain.AuditorAware;
 
+import java.util.Optional;
+
 public class UserAuditor implements AuditorAware<String> {
     @Override
-    public String getCurrentAuditor() {
-        return "plilja"; // hard coded because I don't want to configure spring security right now
+    public Optional<String> getCurrentAuditor() {
+        return Optional.of("plilja"); // hard coded because I don't want to configure spring security right now
     }
 }

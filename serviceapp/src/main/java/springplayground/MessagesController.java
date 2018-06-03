@@ -37,6 +37,6 @@ public class MessagesController {
 
     @GetMapping("/messages/{id}")
     public Message get(@PathVariable long id) {
-        return messagesRepository.findOne(id);
+        return messagesRepository.findById(id).get();
     }
 }
