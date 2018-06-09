@@ -1,12 +1,10 @@
 package springplayground;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Message extends BaseEntity {
+@Table(name = "MESSAGE")
+public class Message extends BaseEntity<Long> {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
@@ -20,9 +18,8 @@ public class Message extends BaseEntity {
         return id;
     }
 
-    public Message setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public String getMessage() {

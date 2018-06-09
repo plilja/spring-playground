@@ -3,15 +3,11 @@ package springplayground;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-// Example of a base crud controller. Currently only one implementation which makes it kinda pointless though...
 public abstract class BaseController<T, ID> {
 
     @Autowired
@@ -32,6 +28,11 @@ public abstract class BaseController<T, ID> {
     @PostMapping
     public T create(@RequestBody T message) {
         return repo.save(message);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable ID id) {
+        repo.deleteById(id);
     }
 
     @GetMapping("{id}")

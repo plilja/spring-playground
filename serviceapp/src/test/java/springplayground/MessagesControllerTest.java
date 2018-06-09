@@ -49,10 +49,16 @@ public class MessagesControllerTest {
         assertEquals(1, numRowsAfter);
 
         // Query for message object
-        Message message = template.queryForObject("select * from message", (resultSet, i) -> new Message()
-                .setId(resultSet.getLong("id"))
-                .setMessage(resultSet.getString("message")));
-        assertEquals(0L, (long) message.getId());
+        Message message = template.queryForObject("select * from message", (resultSet, i) -> {
+            Message m = new Message();
+            m.setId(resultSet.getLong("id"));
+            m.setMessage(resultSet.getString("message"));
+            return m;
+        });
+
+        assertEquals(1L, (long) message.
+                getId());
+
         assertEquals("hello", message.getMessage());
     }
 

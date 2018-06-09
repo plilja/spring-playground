@@ -15,37 +15,42 @@ import java.time.LocalDateTime;
 
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
-public class BaseEntity {
-    @Column(name = "created_by_user")
+public abstract class BaseEntity<ID> {
+    @Column(name = "CREATED_BY")
     @CreatedBy
     @NotNull
-    private String createdByUser;
+    private String createdBy;
 
     @CreatedDate
     @NotNull
-    private LocalDateTime createdDate = LocalDateTime.now();
+    @Column(name = "CREATED_AT")
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Column(name = "modified_by_user")
+    @Column(name = "MODIFIED_BY")
     @LastModifiedBy
-    private String modifiedByUser;
+    private String modifiedBy;
 
-    @Column(name = "modification_time")
+    @Column(name = "MODIFIED_AT")
     @LastModifiedDate
-    private LocalDateTime modificationDate;
+    private LocalDateTime modifiedAt;
 
-    public String getCreatedByUser() {
-        return createdByUser;
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public String getModifiedByUser() {
-        return modifiedByUser;
+    public String getModifiedBy() {
+        return modifiedBy;
     }
 
-    public LocalDateTime getModificationDate() {
-        return modificationDate;
+    public LocalDateTime getModifiedAt() {
+        return modifiedAt;
     }
+
+    public abstract ID getId();
+
+    public abstract void setId(ID id);
 }
