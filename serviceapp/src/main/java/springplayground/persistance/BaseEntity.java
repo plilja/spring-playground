@@ -1,4 +1,4 @@
-package springplayground;
+package springplayground.persistance;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;

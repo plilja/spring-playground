@@ -1,4 +1,4 @@
-package springplayground;
+package springplayground.persistance;
 
 import java.util.List;
 

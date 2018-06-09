@@ -1,6 +1,7 @@
-package springplayground;
+package springplayground.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import springplayground.persistance.DurationedEntity;
 
 import javax.persistence.*;
 import java.util.Collections;

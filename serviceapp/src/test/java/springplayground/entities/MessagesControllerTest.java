@@ -1,4 +1,4 @@
-package springplayground;
+package springplayground.entities;
 
 import org.hamcrest.core.StringContains;
 import org.junit.Test;
@@ -12,6 +12,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import springplayground.TestConfiguration;
+import springplayground.entities.Message;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;

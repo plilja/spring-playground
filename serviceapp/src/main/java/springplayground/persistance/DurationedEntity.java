@@ -1,4 +1,4 @@
-package springplayground;
+package springplayground.persistance;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

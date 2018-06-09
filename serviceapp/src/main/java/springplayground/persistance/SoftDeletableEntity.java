@@ -1,6 +1,7 @@
-package springplayground;
+package springplayground.persistance;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import springplayground.persistance.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;

@@ -1,4 +1,4 @@
-package springplayground;
+package springplayground.hello;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

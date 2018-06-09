@@ -1,4 +1,4 @@
-package springplayground;
+package springplayground.config;
 
 import org.springframework.data.domain.AuditorAware;
 

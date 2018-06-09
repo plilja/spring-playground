@@ -1,4 +1,6 @@
-package springplayground;
+package springplayground.entities;
+
+import springplayground.persistance.BaseEntity;
 
 import javax.persistence.*;
 
