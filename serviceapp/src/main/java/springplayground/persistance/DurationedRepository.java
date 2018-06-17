@@ -1,11 +1,11 @@
 package springplayground.persistance;
 
-import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 
 public class DurationedRepository<T extends DurationedEntity<ID>, ID> {
-    private final SoftDeletableRepository<T, ID> crudRepository;
+    private final CrudRepository<T, ID> crudRepository;
 
-    public DurationedRepository(SoftDeletableRepository<T, ID> crudRepository) {
+    public DurationedRepository(CrudRepository<T, ID> crudRepository) {
         this.crudRepository = crudRepository;
     }
 
@@ -13,7 +13,7 @@ public class DurationedRepository<T extends DurationedEntity<ID>, ID> {
         return crudRepository.findById(id).get();
     }
 
-    public List<T> findAll() {
+    public Iterable<T> findAll() {
         return crudRepository.findAll();
     }
 

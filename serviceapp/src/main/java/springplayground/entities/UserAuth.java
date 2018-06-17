@@ -58,7 +58,6 @@ public class UserAuth extends DurationedEntity<Long> {
         r.id = id;
         r.setFromDate(getFromDate());
         r.setToDate(getToDate());
-        r.setExpireAt(getExpireAt());
         return r;
     }
 

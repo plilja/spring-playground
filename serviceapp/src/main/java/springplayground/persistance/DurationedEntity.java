@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.Map;
 
 @MappedSuperclass
-public abstract class DurationedEntity<ID> extends SoftDeletableEntity<ID> {
+public abstract class DurationedEntity<ID> extends BaseEntity<ID> {
     @Column(name = "FROM_DATE")
     private LocalDate fromDate;
 

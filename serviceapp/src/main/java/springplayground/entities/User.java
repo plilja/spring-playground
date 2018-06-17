@@ -1,12 +1,12 @@
 package springplayground.entities;
 
-import springplayground.persistance.SoftDeletableEntity;
+import springplayground.persistance.BaseEntity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "USER")
-public class User extends SoftDeletableEntity<Long> {
+public class User extends BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

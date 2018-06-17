@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -16,7 +17,10 @@ public class UserAuthController {
 
     @GetMapping
     public ResponseEntity<List<UserAuth>> list() {
-        List<UserAuth> res = repo.findAll();
+        ArrayList<UserAuth> res = new ArrayList<>();
+        for (UserAuth ua : repo.findAll()) {
+            res.add(ua);
+        }
         return ResponseEntity.ok()
                 .header("X-Total-Count", String.valueOf(res.size()))
                 .header("Access-Control-Expose-Headers", "X-Total-Count")
