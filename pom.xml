@@ -11,6 +11,7 @@
     <modules>
         <module>serviceapp</module>
         <module>adminapp</module>
+        <module>clientlib</module>
     </modules>
 
     <parent>

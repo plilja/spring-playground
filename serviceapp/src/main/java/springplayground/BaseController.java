@@ -1,5 +1,6 @@
 package springplayground;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ public abstract class BaseController<T, ID> {
     @Autowired
     private CrudRepository<T, ID> repo;
 
+    @ApiOperation(value = "list", nickname = "list")
     @GetMapping
     public ResponseEntity<List<T>> list() {
         ArrayList<T> res = new ArrayList<>();
@@ -25,16 +27,19 @@ public abstract class BaseController<T, ID> {
                 .body(res);
     }
 
+    @ApiOperation(value = "create", nickname = "create")
     @PostMapping
     public T create(@RequestBody T message) {
         return repo.save(message);
     }
 
-    @DeleteMapping("{id}")
+    @ApiOperation(value = "delete", nickname = "delete")
+    @DeleteMapping(value = "{id}", name = "delete")
     public void delete(@PathVariable ID id) {
         repo.deleteById(id);
     }
 
+    @ApiOperation(value = "get", nickname = "get")
     @GetMapping("{id}")
     public T get(@PathVariable ID id) {
         return repo.findById(id).get();

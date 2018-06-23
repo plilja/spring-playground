@@ -1,0 +1,11 @@
+{ 
+   "modelPackage": "se.plilja.springplayground.client.model",
+   "apiPackage": "se.plilja.springplayground.client.api",
+   "useRuntimeException": true,
+   "groupid": "springplayground",
+   "artifactId": "serviceclient",
+   "library": "resttemplate",
+   "java8": true,
+   "dateLibrary": "java8"
+}
+
